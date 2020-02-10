@@ -86,7 +86,6 @@ L.tileLayer('https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=sJdX2R69yU
 		}).setContent('<iframe src="https://giphy.com/embed/QvMlVkJ3XSSj9cOxDM" width="240" height="163.5" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/swerk-QvMlVkJ3XSSj9cOxDM"></a></p>')
 
     var polyStyle = {
-			  color: 'red',
 				fillOpacity: 0,
 				weight: 0
 		};
@@ -95,16 +94,14 @@ L.tileLayer('https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=sJdX2R69yU
 	L.marker([50.38171400449632, -4.146166640278977], {icon:greenIcon}).addTo(map).bindPopup(popup2);
 	L.marker([50.36799776387114,  -4.136062860488892], {icon:waveIcon}).addTo(map).bindPopup(popup3);
 	L.polygon([
-		        [50.37383827510819, -4.139313697814941],
+		    [50.37383827510819, -4.139313697814941],
             [50.373988811880615, -4.138541221618652],
             [50.3754120450321, -4.137146472930908],
             [50.378313118846606, -4.135408401489258],
             [50.37650681071038, -4.1423821449279785],
             [50.375548892123504, -4.141845703125],
             [50.37497413168687, -4.141738414764404],
-            [50.37383827510819, -4.139313697814941]
-				  	], polyStyle).addTo(map).bindPopup(popup4);
-
+            [50.37383827510819, -4.139313697814941]], polyStyle).addTo(map).bindPopup(popup4);
 // TEst HTIS
 // Ti
 
