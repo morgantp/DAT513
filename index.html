@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+	<style>
+		#map {
+		position:
+		absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	  }
+
+		.leaflet-popup-content-wrapper {
+		border-radius: 0;
+    background: black;
+    color: white;
+    font-size: 24px;
+    }
+    .leaflet-popup-content {
+			margin: 5px
+		}
+
+		.leaflet-popup-tip{
+			background: black;
+		}
+
+		.leaflet-popup-close-button{
+			display: none;
+		}
+
+	</style>
+</head>
+<body>
+	<div id = "map"></div>
+	<script>
+	//sets up starting position of the map
+var map = L.map('map').setView([50.38171515449632, -4.140166640281677], 12);
+
+//grabs the map from a tile server
+L.tileLayer('https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=sJdX2R69yUO7n4qEW4gl', {
+		attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+	}). addTo(map);
+
+	var greenIcon = L.icon({
+			iconUrl: 'badger.png',
+			iconSize: [32, 37],
+			iconAnchor: [16, 37],
+			popupAnchor: [0, -30]
+		});
+
+	var blackIcon = L.icon({
+			iconUrl: 'pin.svg',
+			iconSize: [64, 74],
+			iconAnchor: [32, 74],
+			popupAnchor: [0, -50]
+			});
+
+	var waveIcon = L.icon({
+	  	iconUrl: 'wave.png',
+	  	iconSize: [32, 37],
+	  	iconAnchor: [16, 37],
+	  	popupAnchor: [0, -30]
+	})
+
+		var popup = L.popup({
+			maxWidth : 400,
+		}).setLatLng([50.38171515449632, -4.140166640281677])
+		  .setContent('<iframe src="https://giphy.com/embed/j9LPdnzYhancY" width="240" height="240" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/mrw-day-election-j9LPdnzYhancY"></a></p>')
+		  //.openOn(map);
+
+		var popup2 = L.popup({
+			maxWidth : 400,
+		}).setLatLng([50.38171400449632, -4.146166640278977])
+		  .setContent('<iframe src="https://giphy.com/embed/HGvjR72DXRHWw" width="180" height="240" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/ocean-waves-seas-HGvjR72DXRHWw"></a></p>')
+
+		var popup3 = L.popup({
+			maxWidth : 400,
+		}).setLatLng([50.36799776387114,  -4.136062860488892])
+		  .setContent('Imma Wave boogy woogy')
+
+
+	L.marker([50.38171515449632, -4.140166640281677], {icon:blackIcon}).addTo(map).bindPopup(popup);
+	L.marker([50.38171400449632, -4.146166640278977], {icon:greenIcon}).addTo(map).bindPopup(popup2);
+	L.marker([50.36799776387114,  -4.136062860488892], {icon:waveIcon}).addTo(map).bindPopup(popup3);
+
+	</script>
+</body>
+</html>
