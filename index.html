@@ -86,7 +86,9 @@ L.tileLayer('https://api.maptiler.com/maps/bright/{z}/{x}/{y}.png?key=sJdX2R69yU
 		}).setContent('<iframe src="https://giphy.com/embed/QvMlVkJ3XSSj9cOxDM" width="240" height="163.5" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/swerk-QvMlVkJ3XSSj9cOxDM"></a></p>')
 
     var polyStyle = {
-			  color: 'red'
+			  color: 'red',
+				fillOpacity: 0,
+				weight: 0
 		};
 
 	L.marker([50.38171515449632, -4.140166640281677], {icon:blackIcon}).addTo(map).bindPopup(popup);
