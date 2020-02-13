@@ -1,7 +1,4 @@
----
 deployment:
- tasks:
-  - export DEPLOYPATH=/home/jitexcng/public_html/
-  - /bin/rm -Rf $DEPLOYPATH
-  - /bin/mkdir $DEPLOYPATH
-  - /bin/cp -R src/ $DEPLOYPATH
+  tasks:
+    - export DEPLOYPATH=/home/jitexcng/public_html/
+    - /bin/cp -R images $DEPLOYPATH
