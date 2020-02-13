@@ -1,5 +1,7 @@
 ---
 deployment:
-  tasks:
-    - export DEPLOYPATH=/home/user/public_html/
-    - /home/jitexcng/repositories/DAT513 -R images $DEPLOYPATH
+ tasks:
+  - export DEPLOYPATH=/home/example/public_html/
+  - /bin/rm -Rf $DEPLOYPATH
+  - /bin/mkdir $DEPLOYPATH
+  - /bin/cp -R src/ $DEPLOYPATH
