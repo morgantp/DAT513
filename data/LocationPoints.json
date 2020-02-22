@@ -7,55 +7,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "number": 1
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -4.1444501,
-          50.364386
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "number": 3
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -4.139539003372192,
-          50.36630398379175
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "number": 2
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -4.140408039093018,
-          50.365017354884905
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "number": 0
+        "n": 0,
+        "rid":"First riddle"
       },
       "geometry": {
         "type": "Point",
@@ -71,7 +24,59 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "number": 4
+        "n": 1,
+        "rid":"Second riddle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.1444501,
+          50.364386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "n": 2,
+        "rid":"Third riddle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.140408039093018,
+          50.365017354884905
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "n": 3,
+        "rid":"Fourth riddle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.139539003372192,
+          50.36630398379175
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "n": 4,
+        "rid":"Fifth riddle"
       },
       "geometry": {
         "type": "Point",
@@ -84,10 +89,11 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
+        "marker-color": "#7e7e§7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "number": 5
+        "n": 5,
+        "rid":"Six riddle"
       },
       "geometry": {
         "type": "Point",
@@ -103,7 +109,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "number": 6
+        "n": 6,
+        "rid":"Seven riddle"
       },
       "geometry": {
         "type": "Point",
@@ -119,39 +126,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "number": 9
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -4.134657382965088,
-          50.36715943583246
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "number": 11
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -4.137414693832397,
-          50.3680217158832
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "number": 7
+        "n": 7,
+        "rid":"Eigth riddle"
       },
       "geometry": {
         "type": "Point",
@@ -167,23 +143,8 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "number": 12
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -4.137865304946899,
-          50.36780272560862
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
-        "marker-symbol": "",
-        "number": 8
+        "n": 8,
+        "rid":"Ninth riddle"
       },
       "geometry": {
         "type": "Point",
@@ -199,7 +160,59 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "number": 10
+        "n": 9,
+        "rid":"Tenth riddle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.134657382965088,
+          50.36715943583246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "n": 10,
+        "rid":"Eleven riddle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.137865304946899,
+          50.36780272560862
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "n": 11,
+        "rid":"Twelve riddle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -4.137414693832397,
+          50.3680217158832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "n": 12,
+        "rid":"Twelve riddle"
       },
       "geometry": {
         "type": "Point",
