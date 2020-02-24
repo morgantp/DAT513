@@ -3,7 +3,6 @@ const mappa = new Mappa('Leaflet');
 
 let myMap;
 let mapLoaded;
-
 //Position of User is stored in this
 let userMarker;
 
@@ -41,11 +40,34 @@ function preload() {
     thebb = loadJSON("data/thebarbican.json");
 }
 
+function setup() {
+    let canvas = createCanvas(windowWidth - 1, windowHeight - 1);
+    canvas.parent('map');
+    myMap = mappa.tileMap(options);
+    myMap.overlay(canvas, onMapLoaded);
+
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(gotPosition);
+    }
+}
+
+function overlayWindow(){
+  let overlay = document.getElementById('overlayWin');
+  overlay.style.display = "none";
+
+  // myMap.map.flyTo([50.36544851633019, -4.142467975616455]);
+  myMap.map.setView([50.36544851633019, -4.142467975616455], 16,{
+    animate: true,
+    duration: 3
+  
+});
+  }
+
 // Lets put all our map options in a single object
 const options = {
     lat: 50.36544851633019,
     lng: -4.142467975616455,
-    zoom: 16,
+    zoom: 7,
     style: //"http://{s}.tile.osm.org/{z}/{x}/{y}.png"
         "http://tile.stamen.com/toner/{z}/{x}/{y}.png"
 };
@@ -94,17 +116,6 @@ class State {
     }
 }
 
-function setup() {
-
-    let canvas = createCanvas(windowWidth - 1, windowHeight - 1);
-    canvas.parent('map');
-    myMap = mappa.tileMap(options);
-    myMap.overlay(canvas, onMapLoaded);
-
-    if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(gotPosition);
-    }
-}
 
 
 //in class it was keyPressed() - now using overlay callback
@@ -135,8 +146,6 @@ function onMapLoaded() {
 
     stateArray[0].setActive();
 
-    // print(stateArray[0]);
-
     zoneActive = thehoe;
     drawZone();
 
@@ -156,6 +165,11 @@ function onMapLoaded() {
             });
         }
     });
+
+    myMap.map.on('dragend', function(e) { 
+    zonePoly.openPopup();
+    });
+
     myMap.map.on('mouseup', function(e) {
         myMap.map.removeEventListener('mousemove');
     })
@@ -170,15 +184,11 @@ function drawZone() {
 }
 
 function gotPosition(position) {
-    print("Got Position!");
-    print(position.coords.latitude);
-    print(position.coords.longitude);
-
-
+    print("Position Achieved");
     if (!mapLoaded) return;
 
     if (!userMarker) {
-        userMarker = L.circleMarker([position.coords.latitude, position.coords.longitude]).addTo(myMap.map);
+        userMarker = L.marker([position.coords.latitude, position.coords.longitude],{ icon: userIcon }).addTo(myMap.map);
     } else {
         //MoveMarker
         userMarker.setLatLng([position.coords.latitude, position.coords.longitude]);
@@ -224,12 +234,9 @@ function draw() {
             zoneActive = thehoe;
         }
 
-
-        var mousePos = [];
         //Store the current latitude and longitude of the mouse position
         var posMem = myMap.pixelToLatLng(mouseX, mouseY);
-        mousePos = [posMem.lng, posMem.lat];
-        var mousePoint = turf.point(mousePos);
+        var mousePoint = turf.point([posMem.lng, posMem.lat]);
         var mouseChecker = turf.pointsWithinPolygon(mousePoint, zoneActive.features[0]);
         var isMouseIn = mouseChecker.features.length;
 
@@ -260,27 +267,28 @@ function draw() {
         }
         if (!isMouseIn && startActive) {
             startActive = false;
-            startingMarker = L.marker(zonePoly.getBounds().getCenter()).addTo(myMap.map);
-            startingMarker.bindPopup('<b>Please walk in this area to begin your journey!</b>').openPopup();
+            zonePoly.bindPopup('<b>Please walk in this area to begin your journey!</b>').openPopup();
         } else if (isMouseIn) {
             //If the Mouse is inside the zone
+            zonePoly.closePopup();
+            zonePoly.unbindPopup();
+
             startActive = true;
             fill(255, 40, 60);
             ellipse(mouseX, mouseY, 20);
-            startingMarker.remove();
             enableMarker(true);
 
+                debugLoc.openPopup();
             if (pointActive) {
                 let arr = [];
-                if (popupRiddle.length == 1) {
-                    debugLoc.bindPopup(popupRiddle[0]).openPopup();
-                } else {
                     for (let i = 0; i < popupRiddle.length; i++) {
+                      //populate the array with active points
                         arr.push(popupRiddle[i]);
+                        // add a break point after each riddle
                         arr.splice(i + popupRiddle.length, 0, "\</br>\"");
                     }
+                    //convert array into a string and then remove all double quotes
                     debugLoc.bindPopup(arr.join("").replace(/["]+/g, '')).openPopup();
-                }
                 pointActive = false;
             }
 
