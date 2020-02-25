@@ -50,16 +50,14 @@ let moveMe = new Hammer(overWin);
 let width = window.innerWidth;
 let height = window.innerHeight;
 
-<<<<<<< HEAD
 moveMe.get('pan').set({ direction: Hammer.DIRECTION_ALL, threshold: width / 3 });
-=======
+
 var circStyle = {
       fillOpacity: 0,
       weight: 0
 }
 
 moveMe.get('pan').set({ direction: Hammer.DIRECTION_ALL, threshold: width/3});
->>>>>>> be1f1bb907cedcf2fa4270030337fc7252969fd6
 
 moveMe.on("panleft",
     function(e) {
@@ -109,7 +107,7 @@ function overlayWindow() {
     let riddlesCont = document.getElementById('overlayRiddlesCont');
     let overRiddles = document.getElementById('overlayRiddles');
 
-    
+
     overlayWin.style.display = "none";
     overlay.style.display = "none";
     buttonHide.style.display = "block";
@@ -369,7 +367,7 @@ function draw() {
             //     }
             // }
 
-<<<<<<< HEAD
+
             if (pointActive) {
                 let arr = [];
                 for (let i = 0; i < popupRiddle.length; i++) {
@@ -380,7 +378,7 @@ function draw() {
                 }
                 //convert array into a string and then remove all double quotes
                 debugLoc.bindPopup(arr.join("").replace(/["]+/g, ''), { autoPan: false }).openPopup();
-=======
+
         if (pointActive) {
             let arr = [];
             for (let i = 0; i < popupRiddle.length; i++) {
@@ -388,9 +386,10 @@ function draw() {
                 arr.push(popupRiddle[i]);
                 // add a break point after each riddle
                 arr.splice(i + popupRiddle.length, 0, "\</br><hr>\"");
->>>>>>> be1f1bb907cedcf2fa4270030337fc7252969fd6
             }
             pointActive = false;
+          }
         }
+      }
     }
-}
+  }
