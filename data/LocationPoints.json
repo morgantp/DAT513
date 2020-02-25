@@ -8,7 +8,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 0,
-        "rid":"First riddle"
+        "rid":"This monument stands tall and unimpeded and so should it, <b>LEST WE FORGET</b>."
       },
       "geometry": {
         "type": "Point",
@@ -25,7 +25,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 1,
-        "rid":"Second riddle"
+        "rid":"This one has a few <b>LAYERS</b> to it, best solve it before they cut the <b>CAKE</b>."
       },
       "geometry": {
         "type": "Point",
@@ -42,7 +42,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 2,
-        "rid":"Third riddle"
+        "rid":"h"
       },
       "geometry": {
         "type": "Point",
@@ -59,7 +59,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 3,
-        "rid":"Fourth riddle"
+        "rid":"h"
       },
       "geometry": {
         "type": "Point",
@@ -76,7 +76,8 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 4,
-        "rid":"Fifth riddle"
+        "rid":"This monument stands as a constant reminder of fallen soldiers. Many people walk past it not understanding its <b>POINT</b>. Are you a <b>CUT</b> above the rest?
+"
       },
       "geometry": {
         "type": "Point",
@@ -93,7 +94,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 5,
-        "rid":"Six riddle"
+        "rid":"This old building is used as a school and a place to hold events. It’s old and grand but gets ignored daily. It definitely needs a <b>SAVIOUR</b>."
       },
       "geometry": {
         "type": "Point",
@@ -178,7 +179,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 10,
-        "rid":"Eleven riddle"
+        "rid":"This building is the oldest distillery in the country. If you solve it quickly you may just have time for a <b>G AND T</b>."
       },
       "geometry": {
         "type": "Point",
