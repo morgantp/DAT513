@@ -30,11 +30,11 @@ canvas {
 #btn {
     pointer-events: auto;
     z-index: 5;
-
-    height: 25vw;
-    width: 25vw;
-    border-radius: 100px;
-
+    max-height: 300px;
+    max-width: 300px;
+    height: calc(150px + 5vh);
+    width: calc(150px + 5vh);
+    border-radius: 390px;
     font-size: 24px;
     font-family: Calibri;
     font-weight: 900;
@@ -70,8 +70,6 @@ canvas {
 
 /* Overlay Window properties */
 #overlayWin {
-    /*max-width:  vw;*/
-    /*max-height: 85vh;*/
     min-height: 40vh;
     min-width: 200px; 
     z-index: 5;
