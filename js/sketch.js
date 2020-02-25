@@ -38,6 +38,49 @@ let mapZoomState = false;
 let buttonHide = document.getElementById('btn');
 buttonHide.style.display = "none";
 
+let introState = true;
+let travel = false;
+
+
+let overWin = document.getElementById('overlayWin');
+let moveMe = new Hammer(overWin);
+
+let width = window.innerWidth;
+let height = window.innerHeight;
+
+moveMe.get('swipe').set({ direction: Hammer.DIRECTION_ALL, threshold: width/4});
+
+moveMe.on("swipeleft",
+function(e) {
+
+    if (!mapLoaded) return;
+    if (!introState) return;
+    introState = false;
+    let logo = document.getElementById('pLogo');
+    let title = document.getElementById('section1');
+    let sect3 = document.querySelector('.sect3');
+    sect3.style.display ="block"
+
+    let parag = document.createElement("P");
+    parag.innerHTML = "This is a paragraph";
+    document.querySelector(".sect1").appendChild(parag);
+    document.querySelector("h1").innerHTML = "The Aim of the Game";
+    document.querySelector("h2").innerHTML = "Venture through the Plymouth Hoe and Barbican and solve the meanings behind the riddles that follow";
+    document.querySelector("h3").innerHTML = "Click to continue";
+
+    // let overlay = document.querySelector('.overlayCont');
+
+    // title.appendChild(textt);
+    // let textt = "The Aim Of The Game";
+    // let txt = document.createTextNode(" This text was added to the DIV.");
+    // sectts.appendChild(txt);
+    
+
+    logo.style.display = "none";
+    // overlay.style.display = "none";
+    travel = true;
+});
+
 function preload() {
     // This parses the JSON text file into a Javascript Object
     statePoints = loadJSON("data/LocationPoints.json");
@@ -59,6 +102,7 @@ function setup() {
 
 function overlayWindow() {
     if (!mapLoaded) return;
+    if (!travel) return;
 
     let overlayWin = document.getElementById('overlayWin');
     let overlay = document.querySelector('.overlayCont');
@@ -70,7 +114,7 @@ function overlayWindow() {
     mapZoomState = true;
 
     // myMap.map.flyTo([50.36544851633019, -4.142467975616455]);
-    myMap.map.setView([50.36544851633019, -4.142467975616455], 16, {
+    myMap.map.setView([50.36544851633019, -4.142467975616455], 17, {
         animate: true,
         duration: 3
 
@@ -138,7 +182,6 @@ function onMapLoaded() {
     for (var i = 0; i < statePoints.features.length; i++) {
         var state = new State(false, statePoints.features[i].geometry.coordinates, statePoints.features[i].properties.rid);
         print(state);
-
         stateArray.push(state);
     }
 
