@@ -160,7 +160,7 @@ class State {
         if (this.visited == true) return;
         if (this.active == true) return;
         this.active = true;
-        this.marker = L.circle([this.coords[1], this.coords[0]], 25, /*circStyle*/ );
+        this.marker = L.circle([this.coords[1], this.coords[0]], 25, circStyle );
     }
 
     arrivedAt() {
