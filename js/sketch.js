@@ -342,7 +342,6 @@ function draw() {
         zonePoly.bindPopup('<b>Please walk in this area to begin your journey!</b>', { autoPan: false });
 
         if (!isMouseIn) {
-            ellipse(mouseX, mouseY, 20);
             enableMarker(false);
             userMarker.closePopup();
             userMarker.unbindPopup();
@@ -359,9 +358,7 @@ function draw() {
 
             startActive = true;
 
-            fill(255, 40, 60);
-            ellipse(mouseX, mouseY, 20);
-            enableMarker(true);
+            enableMarker(false);
 
             userMarker.openPopup();
 
