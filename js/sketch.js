@@ -5,8 +5,6 @@ let mapLoaded;
 
 let userMarker;
 
-let targetMarker;
-
 let thehoe;
 let thebb;
 let zonePoly;
@@ -14,14 +12,17 @@ let zonePoly;
 let statePoints;
 var stateArray = [];
 
-let zoneCheck = true;
 let zoneActive;
+let zoneCheck = true;
 let zoneChange = false;
 
 let draggableCirc = [];
 let debugLoc;
+
+let distFromPoint;
+let soundStatus = true;
+let soundReset = false;
 let pointActive = true;
-let breaker = [];
 
 let startActive = true;
 
@@ -29,6 +30,9 @@ let userIcon;
 
 let tSound = new Audio('data/aud/true.ogg');
 let fSound = new Audio('data/aud/false.ogg')
+
+tSound.autoplay = true;
+fSound.autoplay = true;
 
 let mapZoomState = false;
 let buttonHide = document.getElementById('btn');
@@ -54,11 +58,16 @@ function setup() {
 }
 
 function overlayWindow() {
-    let overlay = document.getElementById('overlayWin');
+    if (!mapLoaded) return;
+
+    let overlayWin = document.getElementById('overlayWin');
+    let overlay = document.querySelector('.overlayCont');
+    let buttonHide = document.getElementById('btn');
+
+    overlayWin.style.display = "none";
     overlay.style.display = "none";
     buttonHide.style.display = "block";
     mapZoomState = true;
-
 
     // myMap.map.flyTo([50.36544851633019, -4.142467975616455]);
     myMap.map.setView([50.36544851633019, -4.142467975616455], 16, {
@@ -75,8 +84,7 @@ const options = {
     zoom: 7,
     style: //"http://{s}.tile.osm.org/{z}/{x}/{y}.png"
         "http://tile.stamen.com/toner/{z}/{x}/{y}.png",
-    zoomAnimationThreshold: 40
-};
+    };
 
 
 class State {
@@ -104,7 +112,6 @@ class State {
         if (this.active == true) return;
         this.active = true;
         this.marker = L.circle([this.coords[1], this.coords[0]], 25);
-
     }
 
     arrivedAt() {
@@ -121,8 +128,6 @@ class State {
         this.clues.push(clue);
     }
 }
-
-
 
 //in class it was keyPressed() - now using overlay callback
 function onMapLoaded() {
@@ -171,14 +176,6 @@ function onMapLoaded() {
             });
         }
     });
-
-    myMap.map.on('dragend', function(e) {
-        zonePoly.openPopup();
-    });
-
-    myMap.map.on('mouseup', function(e) {
-        myMap.map.removeEventListener('mousemove');
-    })
 }
 
 function drawZone() {
@@ -200,20 +197,34 @@ function gotPosition(position) {
         userMarker.setLatLng([position.coords.latitude, position.coords.longitude]);
     }
 }
- let distanceCar;
+
 function buttonPressed() {
+    if (soundReset){
+        tSound.pause();
+        tSound.currentTime = 0;
+        fSound.pause();
+        fSound.currentTime = 0;
+        soundReset = false;
+    }
+    soundStatus = true;
     for (var i = 0; i < stateArray.length; i++) {
         //loop through each state array to check whether each state is active
         if (stateArray[i].active == true) {
-            let distance2 = 1000 * turf.distance(turf.point(draggableCirc), turf.point(stateArray[i].coords));
-            if (distance2 < 30) {
+            distFromPoint = 1000 * turf.distance(turf.point(draggableCirc), turf.point(stateArray[i].coords));
+
+            if (distFromPoint < 30) {
+                soundStatus = false;
                 stateArray[i].arrivedAt();
-                tSound.play();
-                pointActive = true;
-            } else if (!pointActive) {
-                fSound.play();
-                pointActive = false;
             }
+        }
+    }
+    for (let i = 0; i < 1; i++) {
+        if (!soundStatus) {
+            tSound.play();
+            pointActive = true;
+        } else if (!pointActive) {
+            fSound.play();
+            soundReset = true;
         }
     }
 }
@@ -273,48 +284,53 @@ function draw() {
         zonePoly.bindPopup('<b>Please walk in this area to begin your journey!</b>', { autoPan: false });
 
         if (!isMouseIn) {
-            // fill(255, 0, 0);
             ellipse(mouseX, mouseY, 20);
             enableMarker(false);
         }
+
         if (!isMouseIn && startActive) {
             startActive = false;
             zonePoly.openPopup();
+
         } else if (isMouseIn) {
             //If the Mouse is inside the zone
             zonePoly.closePopup();
             zonePoly.unbindPopup();
 
             startActive = true;
+
             fill(255, 40, 60);
             ellipse(mouseX, mouseY, 20);
             enableMarker(true);
 
             debugLoc.openPopup();
-            if (pointActive) {
-                let arr = [];
-                for (let i = 0; i < popupRiddle.length; i++) {
-                    //populate the array with active points
-                    arr.push(popupRiddle[i]);
-                    // add a break point after each riddle
-                    arr.splice(i + popupRiddle.length, 0, "\</br>\"");
-                }
-                //convert array into a string and then remove all double quotes
-                debugLoc.bindPopup(arr.join("").replace(/["]+/g, ''), { autoPan: false }).openPopup();
-                pointActive = false;
-            }
+            
+
 
             // whenever an active location is reached, the next state is activated
             // for (var i = 0; i < stateArray.length; i++) {
             //     if (stateArray[i].active == true) {
-            //         let distance2 = 1000 * turf.distance(mousePoint, turf.point(stateArray[i].coords));
-            //         if (distance2 < 30) {
+            //         let distFromPoint = 1000 * turf.distance(mousePoint, turf.point(stateArray[i].coords));
+            //         if (distFromPoint < 30) {
             //             stateArray[i].arrivedAt();
             //             pointActive = true;
             //             tSound.play();
             //         }
             //     }
             // }
+        
+        if (pointActive) {
+            let arr = [];
+            for (let i = 0; i < popupRiddle.length; i++) {
+                //populate the array with active points
+                arr.push(popupRiddle[i]);
+                // add a break point after each riddle
+                arr.splice(i + popupRiddle.length, 0, "\</br>\"");
+            }
+            //convert array into a string and then remove all double quotes
+            debugLoc.bindPopup(arr.join("").replace(/["]+/g, ''), { autoPan: false }).openPopup();
         }
+        pointActive = false;
     }
+}
 }
