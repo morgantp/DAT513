@@ -93,7 +93,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 5,
-        "rid":"This old building is used as a school and a place to hold events. It’s old and grand but gets ignored daily. It definitely needs a <b>SAVIOUR</b>."
+        "rid":"This place has been called a cultural hub. It is old and grand it definitely needs a <b>SAVIOUR</b>. Search for the <b> WOODEN DOOR</b>"
       },
       "geometry": {
         "type": "Point",
@@ -110,7 +110,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 6,
-        "rid":"Seven riddle"
+        "rid":"This <b>BRIDGES</b> the gap between land and sea. Hurry across so you don’t miss your <b>FERRY</b>"
       },
       "geometry": {
         "type": "Point",
@@ -127,7 +127,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 7,
-        "rid":"Sitting enthroned high above, watching the sea and the creatures it's <b>originated</b> from."
+        "rid":"Sitting enthroned high above, watching the sea and the creatures it's <b>ORIGINATED</b> from."
       },
       "geometry": {
         "type": "Point",
@@ -144,7 +144,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 8,
-        "rid":"Ninth riddle"
+        "rid":"You wouldn’t expect to find a <b>MARKET</b> so old in such a <b>NEW STREET</b>."
       },
       "geometry": {
         "type": "Point",
@@ -161,7 +161,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 9,
-        "rid":"Tenth riddle"
+        "rid":"Haddock! Cod! Get your <b>FISH</b> here I’ll let you MILL over your decision. But don’t take too long. I’ve got a <b>TRAIN</b> to catch."
       },
       "geometry": {
         "type": "Point",
@@ -195,7 +195,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 11,
-        "rid":"Twelve riddle"
+        "rid":"Sometimes artists when painting a <b>MURAL</b> needs a canvas the size of a <b>BUILDING</b>"
       },
       "geometry": {
         "type": "Point",
@@ -212,7 +212,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 12,
-        "rid":"Thirteen riddle"
+        "rid":"Wow you're doing great! We'll have to <b>IMPORT</b> some harder riddles"
       },
       "geometry": {
         "type": "Point",
