@@ -28,6 +28,8 @@ let startActive = true;
 
 let userIcon;
 
+let info;
+
 let tSound = new Audio('data/aud/true.ogg');
 let fSound = new Audio('data/aud/false.ogg')
 
@@ -48,9 +50,9 @@ let moveMe = new Hammer(overWin);
 let width = window.innerWidth;
 let height = window.innerHeight;
 
-moveMe.get('swipe').set({ direction: Hammer.DIRECTION_ALL, threshold: width/4});
+moveMe.get('pan').set({ direction: Hammer.DIRECTION_ALL, threshold: width/3});
 
-moveMe.on("swipeleft",
+moveMe.on("panleft",
 function(e) {
 
     if (!mapLoaded) return;
@@ -207,7 +209,7 @@ function onMapLoaded() {
             });
         }
     });
-}
+};
 
 function drawZone() {
     //Set Zone for the first time
