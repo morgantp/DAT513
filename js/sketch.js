@@ -5,6 +5,9 @@ let mapLoaded;
 
 let userMarker;
 
+let userTurfLocation;
+let userCoords;
+
 let thehoe;
 let thebb;
 let zonePoly;
@@ -17,7 +20,7 @@ let zoneCheck = true;
 let zoneChange = false;
 
 let draggableCirc = [];
-let debugLoc;
+// let userMarker;
 
 let distFromPoint;
 let soundStatus = true;
@@ -27,6 +30,7 @@ let pointActive = true;
 let startActive = true;
 
 let userIcon;
+let geoLoc = false;
 
 let riddleCounter = 0;
 
@@ -57,8 +61,6 @@ var circStyle = {
     fillOpacity: 0,
     weight: 0
 }
-
-moveMe.get('pan').set({ direction: Hammer.DIRECTION_ALL, threshold: width / 3 });
 
 moveMe.on("panleft",
     function(e) {
@@ -95,11 +97,13 @@ function setup() {
 
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(gotPosition);
+
     }
 }
 
 function overlayWindow() {
     if (!mapLoaded) return;
+    if (!geoLoc) return;
     if (!travel) return;
 
     let overlayWin = document.getElementById('overlayWin');
@@ -115,10 +119,9 @@ function overlayWindow() {
     riddlesCont.style.display = "block";
     mapZoomState = true;
 
-    // myMap.map.flyTo([50.36544851633019, -4.142467975616455]);
     myMap.map.setView([50.36544851633019, -4.142467975616455], 17, {
         animate: true,
-        duration: 3
+        duration: 3,
 
     });
 }
@@ -130,8 +133,8 @@ const options = {
     zoom: 7,
     style: //"http://{s}.tile.osm.org/{z}/{x}/{y}.png"
         "http://tile.stamen.com/toner/{z}/{x}/{y}.png",
-};
 
+};
 
 class State {
     constructor(active, coordinates, riddle) {
@@ -216,15 +219,15 @@ function onMapLoaded() {
         popupAnchor: [1.5, -35],
     })
 
-    debugLoc = L.marker([50.3655879, -4.1381954], { icon: userIcon }).addTo(myMap.map);
-    debugLoc.on({
-        mousedown: function() {
-            myMap.map.on('mousedown', function(e) {
-                debugLoc.setLatLng(e.latlng);
-                draggableCirc = [e.latlng.lng, e.latlng.lat]
-            });
-        }
-    });
+    userMarker = L.marker([50.3655879, -4.1381954], { icon: userIcon }).addTo(myMap.map);
+    // userMarker.on({
+    //     mousedown: function() {
+    //         myMap.map.on('mousedown', function(e) {
+    //             userMarker.setLatLng(e.latlng);
+    //             draggableCirc = [e.latlng.lng, e.latlng.lat]
+    //         });
+    //     }
+    // });
 };
 
 function drawZone() {
@@ -242,9 +245,13 @@ function gotPosition(position) {
     if (!userMarker) {
         userMarker = L.marker([position.coords.latitude, position.coords.longitude], { icon: userIcon }).addTo(myMap.map);
     } else {
-        //MoveMarker
+
         userMarker.setLatLng([position.coords.latitude, position.coords.longitude]);
     }
+        userCoords = L.GeoJSON.latLngToCoords(userMarker.getLatLng());
+        userTurfLocation = turf.point(userCoords);
+        geoLoc = true;
+
 }
 
 function buttonPressed() {
@@ -259,8 +266,8 @@ function buttonPressed() {
     for (var i = 0; i < stateArray.length; i++) {
         //loop through each state array to check whether each state is active
         if (stateArray[i].active == true) {
-            distFromPoint = 1000 * turf.distance(turf.point(draggableCirc), turf.point(stateArray[i].coords));
-
+            distFromPoint = 1000 * turf.distance(userTurfLocation, turf.point(stateArray[i].coords));
+            console.log(distFromPoint)
             if (distFromPoint < 30) {
                 soundStatus = false;
                 stateArray[i].arrivedAt();
@@ -269,9 +276,11 @@ function buttonPressed() {
     }
     for (let i = 0; i < 1; i++) {
         if (!soundStatus) {
+            console.log('test');
             tSound.play();
             pointActive = true;
-        } else if (!pointActive) {
+        } else if (!pointActive || soundStatus) {
+                console.log(soundStatus);
             fSound.play();
             soundReset = true;
         }
@@ -306,9 +315,9 @@ function draw() {
         }
 
         //Store the current latitude and longitude of the mouse position
-        var posMem = myMap.pixelToLatLng(mouseX, mouseY);
-        var mousePoint = turf.point([posMem.lng, posMem.lat]);
-        var mouseChecker = turf.pointsWithinPolygon(mousePoint, zoneActive.features[0]);
+        // var posMem = myMap.pixelToLatLng(mouseX, mouseY);
+        // var mousePoint = turf.point([posMem.lng, posMem.lat]);
+        var mouseChecker = turf.pointsWithinPolygon(userTurfLocation, zoneActive.features[0]);
         var isMouseIn = mouseChecker.features.length;
 
         //draws and removes the markers
@@ -335,6 +344,8 @@ function draw() {
         if (!isMouseIn) {
             ellipse(mouseX, mouseY, 20);
             enableMarker(false);
+            userMarker.closePopup();
+            userMarker.unbindPopup();
         }
 
         if (!isMouseIn && startActive) {
@@ -352,21 +363,7 @@ function draw() {
             ellipse(mouseX, mouseY, 20);
             enableMarker(true);
 
-            debugLoc.openPopup();
-
-
-
-            // whenever an active location is reached, the next state is activated
-            // for (var i = 0; i < stateArray.length; i++) {
-            //     if (stateArray[i].active == true) {
-            //         let distFromPoint = 1000 * turf.distance(mousePoint, turf.point(stateArray[i].coords));
-            //         if (distFromPoint < 30) {
-            //             stateArray[i].arrivedAt();
-            //             pointActive = true;
-            //             tSound.play();
-            //         }
-            //     }
-            // }
+            userMarker.openPopup();
 
             if (pointActive) {
                 let arr = [];
@@ -377,19 +374,9 @@ function draw() {
                     arr.splice(i + popupRiddle.length, 0, "\</br>\"");
                 }
                 //convert array into a string and then remove all double quotes
-                debugLoc.bindPopup(arr.join("").replace(/["]+/g, ''), { autoPan: false }).openPopup();
-
-                if (pointActive) {
-                    let arr = [];
-                    for (let i = 0; i < popupRiddle.length; i++) {
-                        //populate the array with active points
-                        arr.push(popupRiddle[i]);
-                        // add a break point after each riddle
-                        arr.splice(i + popupRiddle.length, 0, "\</br><hr>\"");
-                    }
+                userMarker.bindPopup(arr.join("").replace(/["]+/g, ''), { autoPan: false, keepInView: true }).openPopup();
                     pointActive = false;
                 }
             }
         }
     }
-}
