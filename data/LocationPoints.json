@@ -4,238 +4,11 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",{
-          "type": "FeatureCollection",
-          "features": [
-            {
-              "type": "Feature",
-              "properties": {
-                "marker-color": "#7e7e7e",
-                "marker-size": "medium",
-                "marker-symbol": "",
-                "n": 0,
-                "rid":"This monument stands tall and unimpeded and so should it, <b>LEST WE FORGET</b>."
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -4.1422319412231445,
-                  50.36542798492164
-                ]
-              }
-            },
-            {
-              "type": "Feature",
-              "properties": {
-                "marker-color": "#7e7e7e",
-                "marker-size": "medium",
-                "marker-symbol": "",
-                "n": 1,
-                "rid":"This one has a few <b>LAYERS</b> to it, best solve it before they cut the <b>CAKE</b>."
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -4.1444501,
-                  50.364386
-                ]
-              }
-            },
-            {
-              "type": "Feature",
-              "properties": {
-                "marker-color": "#7e7e7e",
-                "marker-size": "medium",
-                "marker-symbol": "",
-                "n": 2,
-                "rid":"This one’s a little difficult. You may want to <b>CALL</b> for help."
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -4.140408039093018,
-                  50.365017354884905
-                ]
-              }
-            },
-            {
-              "type": "Feature",
-              "properties": {
-                "marker-color": "#7e7e7e",
-                "marker-size": "medium",
-                "marker-symbol": "",
-                "n": 3,
-                "rid":"This Obelisk was erected in memory of fallen soldiers from Gloucestershire, Somerset and Devon. Come on don’t be a <b>BOER</b> give it a look."
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -4.139539003372192,
-                  50.36630398379175
-                ]
-              }
-            },
-            {
-              "type": "Feature",
-              "properties": {
-                "marker-color": "#7e7e7e",
-                "marker-size": "medium",
-                "marker-symbol": "",
-                "n": 4,
-                "rid":"This monument stands as a constant reminder of fallen soldiers. Many people walk past it not understanding its <b>POINT</b>. Are you a <b>CUT</b> above the rest?
-        "
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -4.137951135635376,
-                  50.366002861004006
-                ]
-              }
-            },
-            {
-              "type": "Feature",
-              "properties": {
-                "marker-color": "#7e7e§7e",
-                "marker-size": "medium",
-                "marker-symbol": "",
-                "n": 5,
-                "rid":"This old building is used as a school and a place to hold events. It’s old and grand but gets ignored daily. It definitely needs a <b>SAVIOUR</b>."
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -4.136288166046143,
-                  50.36592073627573
-                ]
-              }
-            },
-            {
-              "type": "Feature",
-              "properties": {
-                "marker-color": "#7e7e7e",
-                "marker-size": "medium",
-                "marker-symbol": "",
-                "n": 6,
-                "rid":"Seven riddle"
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -4.134174585342407,
-                  50.365715423833315
-                ]
-              }
-            },
-            {
-              "type": "Feature",
-              "properties": {
-                "marker-color": "#7e7e7e",
-                "marker-size": "medium",
-                "marker-symbol": "",
-                "n": 7,
-                "rid":"Eigth riddle"
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -4.133327007293701,
-                  50.3663176711458
-                ]
-              }
-            },
-            {
-              "type": "Feature",
-              "properties": {
-                "marker-color": "#7e7e7e",
-                "marker-size": "medium",
-                "marker-symbol": "",
-                "n": 8,
-                "rid":"Ninth riddle"
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -4.134834408760071,
-                  50.36660510466881
-                ]
-              }
-            },
-            {
-              "type": "Feature",
-              "properties": {
-                "marker-color": "#7e7e7e",
-                "marker-size": "medium",
-                "marker-symbol": "",
-                "n": 9,
-                "rid":"Tenth riddle"
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -4.134657382965088,
-                  50.36715943583246
-                ]
-              }
-            },
-            {
-              "type": "Feature",
-              "properties": {
-                "marker-color": "#7e7e7e",
-                "marker-size": "medium",
-                "marker-symbol": "",
-                "n": 10,
-                "rid":"This building is the oldest distillery in the country. If you solve it quickly you may just have time for a <b>G AND T</b>."
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -4.137865304946899,
-                  50.36780272560862
-                ]
-              }
-            },
-            {
-              "type": "Feature",
-              "properties": {
-                "marker-color": "#7e7e7e",
-                "marker-size": "medium",
-                "marker-symbol": "",
-                "n": 11,
-                "rid":"Twelve riddle"
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -4.137414693832397,
-                  50.3680217158832
-                ]
-              }
-            },
-            {
-              "type": "Feature",
-              "properties": {
-                "marker-color": "#7e7e7e",
-                "marker-size": "medium",
-                "marker-symbol": "",
-                "n": 12,
-                "rid":"Thirteen riddle"
-              },
-              "geometry": {
-                "type": "Point",
-                "coordinates": [
-                  -4.13611114025116,
-                  50.36813121064151
-                ]
-              }
-            }
-          ]
-        }
-
+        "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 0,
-        "rid":"This monument stands tall and unimpeded and so should it, <b>LEST WE FORGET</b>."
+        "rid":"First riddle"
       },
       "geometry": {
         "type": "Point",
@@ -252,7 +25,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 1,
-        "rid":"This one has a few <b>LAYERS</b> to it, best solve it before they cut the <b>CAKE</b>."
+        "rid":"Second riddle"
       },
       "geometry": {
         "type": "Point",
@@ -269,7 +42,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 2,
-        "rid":"h"
+        "rid":"Third riddle"
       },
       "geometry": {
         "type": "Point",
@@ -286,7 +59,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 3,
-        "rid":"h"
+        "rid":"Fourth riddle"
       },
       "geometry": {
         "type": "Point",
@@ -303,8 +76,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 4,
-        "rid":"This monument stands as a constant reminder of fallen soldiers. Many people walk past it not understanding its <b>POINT</b>. Are you a <b>CUT</b> above the rest?
-"
+        "rid":"Fifth riddle"
       },
       "geometry": {
         "type": "Point",
@@ -321,7 +93,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 5,
-        "rid":"This old building is used as a school and a place to hold events. It’s old and grand but gets ignored daily. It definitely needs a <b>SAVIOUR</b>."
+        "rid":"Six riddle"
       },
       "geometry": {
         "type": "Point",
@@ -406,7 +178,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "n": 10,
-        "rid":"This building is the oldest distillery in the country. If you solve it quickly you may just have time for a <b>G AND T</b>."
+        "rid":"Eleven riddle"
       },
       "geometry": {
         "type": "Point",
