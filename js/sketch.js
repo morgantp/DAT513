@@ -28,7 +28,7 @@ let startActive = true;
 
 let userIcon;
 
-let info;
+let riddleCounter = 0;
 
 let tSound = new Audio('data/aud/true.ogg');
 let fSound = new Audio('data/aud/false.ogg')
@@ -50,26 +50,26 @@ let moveMe = new Hammer(overWin);
 let width = window.innerWidth;
 let height = window.innerHeight;
 
-moveMe.get('pan').set({ direction: Hammer.DIRECTION_ALL, threshold: width/3});
+moveMe.get('pan').set({ direction: Hammer.DIRECTION_ALL, threshold: width / 3 });
 
 moveMe.on("panleft",
-function(e) {
+    function(e) {
 
-    if (!mapLoaded) return;
-    if (!introState) return;
-    introState = false;
-    let logo = document.getElementById('pLogo');
-    let title = document.getElementById('section1');
-    let sect3 = document.querySelector('.sect3');
-    sect3.style.display ="block"
+        if (!mapLoaded) return;
+        if (!introState) return;
+        introState = false;
+        let logo = document.getElementById('pLogo');
+        let title = document.getElementById('section1');
+        let sect3 = document.querySelector('.sect3');
+        sect3.style.display = "block"
 
-    document.querySelector("h1").innerHTML = "The Aim of the Game";
-    document.querySelector("h2").innerHTML = "Venture through the Plymouth Hoe and Barbican and solve the meanings behind the riddles that follow";
-    document.querySelector("h3").innerHTML = "Click to continue";
+        document.querySelector("h1").innerHTML = "The Aim of the Game";
+        document.querySelector("h2").innerHTML = "Venture through the Plymouth Hoe and Barbican and solve the meanings behind the riddles that follow";
+        document.querySelector("h3").innerHTML = "Click to continue";
 
-    logo.style.display = "none";
-    travel = true;
-});
+        logo.style.display = "none";
+        travel = true;
+    });
 
 function preload() {
     // This parses the JSON text file into a Javascript Object
@@ -97,10 +97,14 @@ function overlayWindow() {
     let overlayWin = document.getElementById('overlayWin');
     let overlay = document.querySelector('.overlayCont');
     let buttonHide = document.getElementById('btn');
+    let riddlesCont = document.getElementById('overlayRiddlesCont');
+    let overRiddles = document.getElementById('overlayRiddles');
 
+    
     overlayWin.style.display = "none";
     overlay.style.display = "none";
     buttonHide.style.display = "block";
+    riddlesCont.style.display = "block";
     mapZoomState = true;
 
     // myMap.map.flyTo([50.36544851633019, -4.142467975616455]);
@@ -118,7 +122,7 @@ const options = {
     zoom: 7,
     style: //"http://{s}.tile.osm.org/{z}/{x}/{y}.png"
         "http://tile.stamen.com/toner/{z}/{x}/{y}.png",
-    };
+};
 
 
 class State {
@@ -152,6 +156,10 @@ class State {
         this.visited = true;
         this.active = false;
         this.marker.remove();
+        riddleCounter++;
+        document.querySelector('#hRiddle').innerHTML = riddleCounter + "/13";
+        document.querySelector('#riddleText').innerHTML = "Riddle";
+        console.log(riddleCounter);
         for (var i = 0; i < this.nextStates.length; i++) {
             this.nextStates[i].setActive();
         }
@@ -232,7 +240,7 @@ function gotPosition(position) {
 }
 
 function buttonPressed() {
-    if (soundReset){
+    if (soundReset) {
         tSound.pause();
         tSound.currentTime = 0;
         fSound.pause();
@@ -352,18 +360,18 @@ function draw() {
             //     }
             // }
 
-        if (pointActive) {
-            let arr = [];
-            for (let i = 0; i < popupRiddle.length; i++) {
-                //populate the array with active points
-                arr.push(popupRiddle[i]);
-                // add a break point after each riddle
-                arr.splice(i + popupRiddle.length, 0, "\</br>\"");
+            if (pointActive) {
+                let arr = [];
+                for (let i = 0; i < popupRiddle.length; i++) {
+                    //populate the array with active points
+                    arr.push(popupRiddle[i]);
+                    // add a break point after each riddle
+                    arr.splice(i + popupRiddle.length, 0, "\</br>\"");
+                }
+                //convert array into a string and then remove all double quotes
+                debugLoc.bindPopup(arr.join("").replace(/["]+/g, ''), { autoPan: false }).openPopup();
             }
-            //convert array into a string and then remove all double quotes
-            debugLoc.bindPopup(arr.join("").replace(/["]+/g, ''), { autoPan: false }).openPopup();
+            pointActive = false;
         }
-        pointActive = false;
     }
-}
 }

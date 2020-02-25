@@ -27,24 +27,31 @@ canvas {
   justify-content: center;
 }
 
-.overlayRiddleCont{
-  
-  z-index: 10;
-  position: relative;
+#overlayRiddlesCont{
+  margin: auto;
+  z-index: 15;
+  position: absolute;
   display: none;
   width: 100%;
   height: 100px;
-  background-color: red;
 }
 
-#overlayRiddle span{
+#box{
+  display: inherit;
+  z-index: 16;
   position: relative;
-  width: 300px;
-  height: 100px;
-  background-color: red;
+  width: 20vw;
+  justify-content: flex;
+  background-color: white;
+  border: 5px solid black;
 }
 
-
+#boxCont{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+}
 
 #btn {
     pointer-events: auto;
@@ -54,7 +61,7 @@ canvas {
     height: calc(150px + 5vh);
     width: calc(150px + 5vh);
     border-radius: 390px;
-    font-size: 24px;
+    font-size: 100vh;
     font-family: Calibri;
     font-weight: 900;
     background: forestgreen;
@@ -190,6 +197,14 @@ h3{
   font-family: Calibri;
   font-weight: normal;
   font-size: calc(10px + 2vh);
+}
+
+h4{
+  color: black;
+  font-family: Calibri;
+  font-weight: bold;
+  font-size: calc(10px + 2.1vh);
+  text-align: center;
 }
 
 .pulse{
