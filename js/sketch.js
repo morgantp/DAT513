@@ -61,23 +61,11 @@ function(e) {
     let sect3 = document.querySelector('.sect3');
     sect3.style.display ="block"
 
-    let parag = document.createElement("P");
-    parag.innerHTML = "This is a paragraph";
-    document.querySelector(".sect1").appendChild(parag);
     document.querySelector("h1").innerHTML = "The Aim of the Game";
     document.querySelector("h2").innerHTML = "Venture through the Plymouth Hoe and Barbican and solve the meanings behind the riddles that follow";
     document.querySelector("h3").innerHTML = "Click to continue";
-
-    // let overlay = document.querySelector('.overlayCont');
-
-    // title.appendChild(textt);
-    // let textt = "The Aim Of The Game";
-    // let txt = document.createTextNode(" This text was added to the DIV.");
-    // sectts.appendChild(txt);
     
-
     logo.style.display = "none";
-    // overlay.style.display = "none";
     travel = true;
 });
 
