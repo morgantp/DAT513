@@ -368,7 +368,7 @@ function draw() {
                     //populate the array with active points
                     arr.push(popupRiddle[i]);
                     // add a break point after each riddle
-                    arr.splice(i + popupRiddle.length, 0, "\</br>\"");
+                    arr.splice(i + popupRiddle.length, 0, "\</br><hr>\"");
                 }
                 //convert array into a string and then remove all double quotes
                 userMarker.bindPopup(arr.join("").replace(/["]+/g, ''), { autoPan: false, keepInView: true }).openPopup();
